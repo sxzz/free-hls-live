@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Free-HLS Live</title>
+    <meta name="referrer" content="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video-js.min.css"
+    />
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        text-align: center;
+        background: black;
+      }
+
+      h1 {
+        padding: 30px;
+        color: #bdbdbd;
+        font-size: 45px;
+        font-weight: normal;
+        box-sizing: border-box;
+      }
+
+      video:focus {
+        outline: none;
+      }
+
+      .wrapper {
+        width: 100%;
+        margin: auto;
+        height: 100%;
+        text-align: center;
+      }
+
+      .video-js {
+        width: 100% !important;
+        height: 100% !important;
+        position: relative !important;
+      }
+
+      .vjs-big-play-button {
+        margin-top: -130px !important;
+      }
+
+      @media (max-width: 1200px) {
+        body {
+          background: #1d1d1d;
+        }
+
+        h1 {
+          padding: 0.75rem;
+          color: #bdbdbd;
+          font-size: 1.1252rem;
+          font-weight: normal;
+          box-sizing: border-box;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="url" />
+    <video
+      id="player"
+      width="960"
+      height="540"
+      class="video-js vjs-default-skin vjs-big-play-centered"
+      controls
+    >
+      <source src="" type="application/vnd.apple.mpegurl" />
+    </video>
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.6.6/dist/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.25/videojs.hotkeys.min.js"></script>
+    <script>
+      var player = videojs("player", {
+        html5: {
+          hls: {
+            overrideNative: !videojs.browser.IS_SAFARI
+          }
+        },
+        playbackRates: [0.5, 1, 1.5, 2]
+      });
+
+      player.ready(function() {
+        this.hotkeys({
+          seekStep: 5,
+          volumeStep: 0.1,
+          enableModifiersForNumbers: false
+        });
+      });
+
+      document
+        .querySelector("#url")
+        .addEventListener("change", function(event) {
+          console.log(player.src(event.target.value));
+        });
+    </script>
+  </body>
+</html>

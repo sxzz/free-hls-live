@@ -22,3 +22,4 @@ yarn start
 
 - [sxzz/free-hls.js](https://github.com/sxzz/free-hls.js) HLS 上传工具（Node.js 版）
 - [sxyazi/free-hls](https://github.com/sxyazi/free-hls) 一个免费的 HLS 解决方案
+- [illuspas/Node-Media-Server](https://github.com/illuspas/Node-Media-Server) A Node.js implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH/MP4 Media Server
