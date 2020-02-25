@@ -18,6 +18,26 @@ yarn install
 yarn start
 ```
 
+## Usage
+
+### 使用 OBS 推流
+
+> Settings -> Stream
+
+Stream Type : Custom Streaming Server
+
+URL : rtmp://localhost/live
+
+Stream key : STREAM_NAME
+
+### 播放直播流
+
+使用以下命令或使用网页版播放器 `public/player.html`
+
+```bash
+ffplay http://hostname:8000/live/STREAM_NAME/live.m3u8
+```
+
 ## Related
 
 - [sxzz/free-hls.js](https://github.com/sxzz/free-hls.js) HLS 上传工具（Node.js 版）
