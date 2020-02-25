@@ -1,5 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+const process = require("process");
+
 const NodeMediaServer = require("node-media-server");
 const _ = require("lodash");
 const chokidar = require("chokidar");
@@ -24,7 +26,7 @@ const config = {
     allow_origin: "*"
   },
   trans: {
-    ffmpeg: "/usr/local/bin/ffmpeg",
+    ffmpeg: process.env.FFMPEG_PATH || "/usr/local/bin/ffmpeg",
     tasks: [
       {
         app: "live",
@@ -38,44 +40,61 @@ const config = {
 const nms = new NodeMediaServer(config);
 nms.run();
 
-const liveInfo = {
-  sequence: 0,
-  fileList: [],
-  uploaded: {}
-};
+const lives = {};
 
-function replace_manifest(file) {
-  let lines = fs.readFileSync(file, {
-    flag: "r",
-    encoding: "utf-8"
-  });
+const defaultLive = () => ({ sequence: 0, fileList: [], uploaded: {} });
 
-  for (const filename of Object.keys(liveInfo.uploaded)) {
-    lines = lines.replace(filename, liveInfo.uploaded[filename]);
+nms.on("postPublish", (id, StreamPath, args) => {
+  const stream_name = utils.getStreamName(StreamPath);
+  lives[stream_name] = defaultLive();
+});
+
+nms.on("donePublish", (id, StreamPath, args) => {
+  const stream_name = utils.getStreamName(StreamPath);
+  delete lives[stream_name];
+});
+
+function build_new_manifest(stream_name, lines) {
+  for (const filename of Object.keys(lives[stream_name].uploaded)) {
+    lines = lines.replace(filename, lives[stream_name].uploaded[filename]);
   }
 
-  fs.writeFileSync(file, lines, { flag: "r+", encoding: "utf-8" });
-  return lines;
+  const file = path.resolve(
+    __dirname,
+    "media",
+    "live",
+    stream_name,
+    "live.m3u8"
+  );
+
+  fs.writeFileSync(file, lines, {
+    flag: "w+",
+    encoding: "utf-8"
+  });
 }
 
 chokidar.watch("./media/live/*/index.m3u8").on("all", async (event, file) => {
-  const lines = replace_manifest(file);
-
+  let lines;
+  try {
+    lines = fs.readFileSync(file, { encoding: "utf-8" });
+  } catch (error) {
+    return;
+  }
   const parser = new m3u8Parser.Parser();
   parser.push(lines);
   parser.end();
-
   const manifest = parser.manifest;
-  if (manifest.mediaSequence < liveInfo.sequence) {
-    this.liveInfo.fileList = [];
-    this.liveInfo.uploaded = {};
+
+  const stream_name = path.basename(path.dirname(file));
+  if (manifest.mediaSequence < lives[stream_name].sequence) {
+    lives[stream_name] = defaultLive();
   }
 
+  const live = lives[stream_name];
   const segmentFiles = manifest.segments
     .map(segment => segment.uri)
     .filter(file => !file.startsWith("http"));
-  const newFiles = _.difference(segmentFiles, liveInfo.fileList);
-
+  const newFiles = _.difference(segmentFiles, live.fileList);
   if (newFiles.length == 0) {
     return;
   }
@@ -84,12 +103,14 @@ chokidar.watch("./media/live/*/index.m3u8").on("all", async (event, file) => {
   for (const newFile of newFiles) {
     tasks.push(
       utils.upload_yuque(path.resolve(file, "..", newFile)).then(url => {
-        liveInfo.uploaded[newFile] = url;
+        live.uploaded[newFile] = url;
       })
     );
   }
   await Promise.all(tasks);
-  replace_manifest(file);
 
-  liveInfo.fileList = segmentFiles;
+  build_new_manifest(stream_name, lines);
+
+  live.fileList = segmentFiles;
+  live.sequence = manifest.mediaSequence;
 });

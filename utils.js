@@ -3,6 +3,10 @@ const axios = require("axios");
 const FormData = require("form-data");
 
 module.exports = {
+  getStreamName(stream_path) {
+    return stream_path.split("/").pop();
+  },
+
   async upload_yuque(file) {
     const data = new FormData();
     data.append("file", fs.createReadStream(file), {
