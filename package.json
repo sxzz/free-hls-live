@@ -18,7 +18,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "form-data": "^3.0.0",
     "hls-server": "^1.5.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "m3u8-parser": "^4.4.0",
     "node-media-server": "^2.1.4"
   }
