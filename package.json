@@ -12,7 +12,7 @@
     "url": "git+https://github.com/sxzz/free-hls-live.git"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "chokidar": "^3.3.1",
     "dotenv": "^8.2.0",
     "fluent-ffmpeg": "^2.1.2",
