@@ -7,4 +7,15 @@ storage:
   secretKey: xxxxxxxxx
   bucket: xxxxxxxxx
   region: ap-guangzhou
-  path: /
+  path: / # 必须以 / 结尾
+
+
+  # provider: ssh
+  # path: /tmp/ # 必须以 / 结尾
+  # connect:
+  #   host: 1.2.3.4
+  #   port: 22
+  #   username: root
+  #   # password: password
+  #   privateKey: /path/id_rsa
+  #   passphrase:

@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const { resolve } = require('path');
+const { resolve, basename } = require('path');
+const os = require('os');
+
 const { program } = require('commander');
 const chokidar = require('chokidar');
 const { green, red, blue } = require('chalk');
@@ -35,19 +37,18 @@ if (!storageProvider) throw new Error('storage provider does not exist!');
 dirs.forEach(dir =>
   chokidar
     .watch('*.m3u8', { cwd: dir })
-    .on('all', onPlaylistChange.bind(undefined, dir))
+    .on('add', onPlaylistChange.bind(undefined, dir))
+    .on('change', onPlaylistChange.bind(undefined, dir))
 );
 
-async function onPlaylistChange(baseDir, event, filename) {
-  if (['unlink', 'unlinkDir'].includes(event)) return;
-
-  const path = resolve(baseDir, filename);
-  let content = fs.readFileSync(path, { encoding: 'utf-8' });
+async function onPlaylistChange(baseDir, filename) {
+  const playlistPath = resolve(baseDir, filename);
+  let content = fs.readFileSync(playlistPath, { encoding: 'utf-8' });
 
   const parser = new Parser();
   parser.push(content);
   parser.end();
-  const manifest = parser.manifest;
+  const { manifest } = parser;
 
   const tasks = [];
   for (const segment of manifest.segments) {
@@ -74,10 +75,7 @@ async function onPlaylistChange(baseDir, event, filename) {
           );
           return { filename: segment.uri, url };
         })
-        .catch(err => {
-          console.log(red(err));
-          return null;
-        });
+        .catch(err => void console.log(red(err)));
     }
     tasks.push(task);
   }
@@ -91,5 +89,14 @@ async function onPlaylistChange(baseDir, event, filename) {
       );
     });
 
-  storageProvider(path, content, config);
+  if (results.length === 0) return;
+
+  const localFile = resolve(os.tmpdir(), filename);
+  fs.writeFileSync(localFile, content, { encoding: 'utf-8' });
+
+  storageProvider({
+    localFile,
+    filename,
+    config,
+  });
 }
