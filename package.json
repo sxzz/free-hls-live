@@ -1,6 +1,6 @@
 {
   "name": "free-hls-live",
-  "version": "2.0.0-alpha-1",
+  "version": "2.0.0",
   "description": "live video streaming with FreeHLS",
   "main": "index.js",
   "license": "GPL-3.0",

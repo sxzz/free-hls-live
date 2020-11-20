@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/sxzz/free-hls-live/compare/v1.0.2...v2.0.0) (2020-11-20)
+
 ### [1.0.2](https://github.com/sxzz/free-hls-live/compare/v1.0.1...v1.0.2) (2020-10-02)
 
 
