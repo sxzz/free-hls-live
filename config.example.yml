@@ -1,0 +1,10 @@
+dirs:
+  - /tmp/abc
+uploader: example
+storage:
+  provider: cos
+  secretId: xxxxxxxxx
+  secretKey: xxxxxxxxx
+  bucket: xxxxxxxxx
+  region: ap-guangzhou
+  path: /
