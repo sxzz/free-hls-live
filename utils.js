@@ -1,13 +1,21 @@
-const fs = require("fs");
-const axios = require("axios");
-const FormData = require("form-data");
+const fs = require('fs');
+const path = require('path');
+const yaml = require('yaml');
 
 module.exports = {
-  getStreamName(stream_path) {
-    return stream_path.split("/").pop();
+  requireSafe(id, errorValue = null) {
+    try {
+      return require(id);
+    } catch {
+      return errorValue;
+    }
   },
 
-  async upload_yuque(file) {
-    return "URL";
+  getConfig(filepath) {
+    return yaml.parse(
+      fs.readFileSync(path.resolve(process.cwd(), filepath), {
+        encoding: 'utf-8',
+      })
+    );
   },
 };

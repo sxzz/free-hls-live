@@ -1,45 +1,58 @@
-# Free HLS 直播姬
+# Free HLS Live
 
-利用 Free-HLS 实现免费直播
+Free live streaming with Free-HLS.
 
-**本项目仅供学习交流使用，在使用过程中对你或他人造成的任何损失我们概不负责。**
+Read this in other languages: English | [简体中文](./README.zh-CN.md)
+
+**This project is for learning and communication purposes only, and we are not responsible for any losses caused to you or others during use.**
 
 ## Requirements
-- NodeJS
+
+- Node.js
 - Yarn
-- FFmpeg
+- Aliyun OSS / TencentCloud COS
 
 ## Installation
 
 ```bash
 git clone https://github.com/sxzz/free-hls-live.git
-cd free-hls.js
+cd free-hls-live
 yarn install
-yarn start
 ```
 
 ## Usage
 
-### 使用 OBS 推流
+First, you need to write an Uploader by yourself, see [sxyazi/free-hls#19](https://github.com/sxyazi/free-hls/issues/19)
 
-> Settings -> Stream
+### Configure Storage
 
-Stream Type : Custom Streaming Server
+Because the m3u8 file is constantly changing, it cannot be implemented with the image bed
 
-URL : rtmp://localhost/live
+You need to have a service that can store files and can be accessed by the public network, such as servers, Aliyun OSS, TencentCloud COS, etc. And you need to configure CORS cross-domain. The m3u8 file is generally small and cost less.
 
-Stream key : STREAM_NAME
+Copy `config.example.yml` to `config.yml`
 
-### 播放直播流
+### Via OBS
 
-使用以下命令或使用网页版播放器 `public/player.html`
+1. In the settings dialog go to Advanced and set the recording filename. The default includes the current time. Choose something without any special % time values. You also need to enable Overwrite if file exists.
+2. In the Settings Dialog go to Output, set output mode to Advanced and go to the recording tab. Here you set type to "Custom Output (ffmpeg)" and set container format to "hls". Set the file path to a folder.
 
 ```bash
-ffplay http://hostname:8000/live/STREAM_NAME/live.m3u8
+# config-path: Configuration file path
+# [steaming-folder]: The path of the live video directory, which can be configured in the configuration file
+# [uploader-name]: Filename under uploader directory (without extension)
+yarn start [steaming-folder] -c <config-path> [-u uploader-name]
 ```
+
+### Play live stream
+
+Use the web player `public/player.html` to play
 
 ## Related
 
-- [sxzz/free-hls.js](https://github.com/sxzz/free-hls.js) HLS 上传工具（Node.js 版）
-- [sxyazi/free-hls](https://github.com/sxyazi/free-hls) 一个免费的 HLS 解决方案
-- [illuspas/Node-Media-Server](https://github.com/illuspas/Node-Media-Server) A Node.js implementation of RTMP/HTTP-FLV/WS-FLV/HLS/DASH/MP4 Media Server
+- [sxzz/free-hls.js](https://github.com/sxzz/free-hls.js) HLS upload tool (Written in Node.js)
+- [sxyazi/free-hls](https://github.com/sxyazi/free-hls) A free HLS video solution
+
+## Reference
+
+- [How to do HLS streaming in OBS (Open Broadcast Studio)](https://obsproject.com/forum/resources/how-to-do-hls-streaming-in-obs-open-broadcast-studio.945/)
