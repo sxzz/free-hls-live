@@ -6,7 +6,7 @@ const os = require('os');
 
 const { program } = require('commander');
 const chokidar = require('chokidar');
-const { green, red, blue } = require('chalk');
+const { green, red, blue } = require('colorette');
 const { Parser } = require('m3u8-parser');
 
 const { requireSafe, getConfig } = require('./utils');

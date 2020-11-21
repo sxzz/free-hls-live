@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { resolve, basename } = require('path');
 const { NodeSSH } = require('node-ssh');
-const { green } = require('chalk');
+const { green } = require('colorette');
 
 module.exports = async ({ localFile, filename, config }) => {
   const ssh = new NodeSSH();

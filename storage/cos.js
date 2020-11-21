@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { green } = require('chalk');
+const { green } = require('colorette');
 const COS = require('cos-nodejs-sdk-v5');
 
 module.exports = ({ localFile, filename, config }) =>
