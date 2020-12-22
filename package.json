@@ -24,7 +24,7 @@
     "video streaming"
   ],
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "chokidar": "^3.3.1",
     "colorette": "^1.2.1",
     "commander": "^6.2.1",
