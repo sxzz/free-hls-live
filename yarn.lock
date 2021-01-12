@@ -2,21 +2,21 @@
 # yarn lockfile v1
 
 
-"@babel/runtime@^7.5.5":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
   integrity sha512-plcc+hbExy3McchJCEQG3knOsuh3HH+Prx1P6cLIkET/0dLuQDEnrT+s27Axgc9bqfsmNUNHfscgMUdBpC9xfg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@videojs/vhs-utils@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@videojs/vhs-utils/-/vhs-utils-2.2.1.tgz#78ecea26652268646d5003b1b1a705c9b544f8a2"
-  integrity sha512-9Qbwx3LAdkG1jh2HKfninjXDxVZCeaoPcmct/bUcDRmLej68Z9XhLe5d2a9fy1qB+UuQwWg7YySASesWavYNjQ==
+"@videojs/vhs-utils@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@videojs/vhs-utils/-/vhs-utils-3.0.0.tgz#998fda2a7519218a30759385d2048b1cd30eba36"
+  integrity sha512-HPgiaVB8/g7DooYFQ20uTinq4eNRHmIXGHHttK/Xwyvn19MfIpg9BfMNr9ywCvgHh0IUGrxt6P8AcmMO4xvxIA==
   dependencies:
-    "@babel/runtime" "^7.5.5"
-    global "^4.3.2"
-    url-toolkit "^2.1.6"
+    "@babel/runtime" "^7.12.5"
+    global "^4.4.0"
+    url-toolkit "^2.2.1"
 
 ajv@^6.12.2, ajv@^6.12.3:
   version "6.12.6"
@@ -292,7 +292,7 @@ glob-parent@~5.1.0:
   dependencies:
     is-glob "^4.0.1"
 
-global@^4.3.2:
+global@^4.3.2, global@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/global/-/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
   integrity sha512-wv/LAoHdRE3BeTGz53FAamhGlPLhlssK45usmGFThIi4XqnBmjKQ16u+RNbP7WvigRZDxUsM0J3gcQ5yicaL0w==
@@ -409,13 +409,13 @@ lodash@^4.17.19:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
-m3u8-parser@^4.4.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/m3u8-parser/-/m3u8-parser-4.5.0.tgz#9c30b32c9b69cc3f81b5e6789717fa84b9fdb9aa"
-  integrity sha512-RGm/1WVCX3o1bSWbJGmJUu4zTbtJy8lImtgHM4CESFvJRXYztr1j6SW/q9/ghYOrUjgH7radsIar+z1Leln0sA==
+m3u8-parser@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/m3u8-parser/-/m3u8-parser-4.5.1.tgz#73b4bd5e6cca30ce21f906d29391d5516fe35fe2"
+  integrity sha512-k2biZ6sL1PUgIp2Xuq6efAjTqJtOiK+I8bBUj8vE70ry61gPzHv7RpO6a23WZ5e62XqI559P750hVUtW+zDUhw==
   dependencies:
     "@babel/runtime" "^7.5.5"
-    "@videojs/vhs-utils" "^2.2.1"
+    "@videojs/vhs-utils" "^3.0.0"
     global "^4.3.2"
 
 make-dir@^3.1.0:
@@ -693,7 +693,7 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-toolkit@^2.1.6:
+url-toolkit@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/url-toolkit/-/url-toolkit-2.2.1.tgz#89009ed3d62a3574de079532a7266c14d2cc1c4f"
   integrity sha512-8+DzgrtDZYZGhHaAop5WGVghMdCfOLGbhcArsJD0qDll71FXa7EeKxi2hilPIscn2nwMz4PRjML32Sz4JTN0Xw==
