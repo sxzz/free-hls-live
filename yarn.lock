@@ -437,10 +437,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-m3u8-parser@^4.5.2:
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/m3u8-parser/-/m3u8-parser-4.5.2.tgz#f7d48a60112466e528324624c4e66d52ed341a75"
-  integrity sha512-sN/lu3TiRxmG2RFjZxo5c0/7Dr4RrEztl43jXrWwj5gFZ7vfa2iIxGfiPx485dm5QCazaIcKk+vNkUso8Aq0Ag==
+m3u8-parser@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/m3u8-parser/-/m3u8-parser-4.6.0.tgz#a0e2f5dcf8391c9a6e59895a084fa38f27b52124"
+  integrity sha512-dKhhpMcPqDM/KzULVrNyDZ/z766peQjwUghDTcl6TE7DQKAt/vm74/IMUAxpO34f6LDpM+OH/dYGQwW1eM4yWw==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@videojs/vhs-utils" "^3.0.0"
