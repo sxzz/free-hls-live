@@ -28,7 +28,7 @@
     "chokidar": "^3.5.1",
     "colorette": "^1.2.2",
     "commander": "^6.2.1",
-    "cos-nodejs-sdk-v5": "^2.9.18",
+    "cos-nodejs-sdk-v5": "^2.9.19",
     "form-data": "^4.0.0",
     "lodash": "^4.17.21",
     "m3u8-parser": "^4.5.2",
