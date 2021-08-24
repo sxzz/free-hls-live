@@ -2,3 +2,4 @@
 indent_style = space
 tab_width = 2
 end_of_line = lf
+insert_final_newline = true
