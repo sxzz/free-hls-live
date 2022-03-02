@@ -39,8 +39,8 @@ yarn install
 
 ```bash
 # config-path 配置文件路径，必填
-# [steaming-folder] 直播视频目录路径，可在配置文件中配置
-# [uploader-name] uploader 目录下的文件名（不含扩展名），可在配置文件中设置
+# [steaming-folder] 直播视频目录路径
+# [uploader-name] uploader 文件路径
 yarn start [steaming-folder] -c <config-path> [-u uploader-name]
 ```
 

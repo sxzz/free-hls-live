@@ -38,9 +38,9 @@ Copy `config.example.yml` to `config.yml`
 2. In the Settings Dialog go to Output, set output mode to Advanced and go to the recording tab. Here you set type to "Custom Output (ffmpeg)" and set container format to "hls". Set the file path to a folder.
 
 ```bash
-# config-path: Configuration file path
-# [steaming-folder]: The path of the live video directory, which can be configured in the configuration file
-# [uploader-name]: Filename under uploader directory (without extension)
+# config-path: configuration file path
+# [steaming-folder]: the path of the live video directory.
+# [uploader-name]: uploader file path
 yarn start [steaming-folder] -c <config-path> [-u uploader-name]
 ```
 
