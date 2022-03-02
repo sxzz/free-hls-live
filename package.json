@@ -1,38 +1,53 @@
 {
   "name": "free-hls-live",
-  "version": "2.1.0",
-  "description": "live video streaming with FreeHLS",
-  "main": "index.js",
-  "license": "GPL-3.0",
-  "author": "Kevin <sxzz@sxzz.moe>",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "3.0.0",
+  "description": "Live video streaming with FreeHLS",
+  "publishConfig": {
+    "access": "public"
   },
-  "bin": {
-    "hls-live": "./index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sxzz/free-hls-live.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sxzz/free-hls-live/issues"
-  },
-  "keywords": [
-    "Free HLS",
-    "video streaming"
+  "license": "AGPL-3.0",
+  "files": [
+    "dist",
+    "bin"
   ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "free-hls-live": "./bin/free-hls-live.js"
+  },
+  "scripts": {
+    "start": "node ./bin/free-hls-live.js",
+    "dev": "esno ./src/index.ts",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
+    "lint:fix": "eslint . --fix --ext .js,.ts,.jsx,.tsx",
+    "build": "tsup && esno scripts/postbuild.ts",
+    "test": "vitest",
+    "prepublishOnly": "pnpm run build"
+  },
   "dependencies": {
-    "axios": "^0.24.0",
-    "chokidar": "^3.5.2",
-    "colorette": "^2.0.0",
-    "commander": "^6.2.1",
-    "cos-nodejs-sdk-v5": "^2.10.0",
-    "form-data": "^4.0.0",
-    "lodash": "^4.17.21",
+    "chokidar": "^3.5.3",
+    "colorette": "^2.0.16",
+    "commander": "^9.0.0",
+    "cos-nodejs-sdk-v5": "^2.11.6",
+    "esbuild": "^0.14.23",
+    "esbuild-register": "^3.3.2",
     "m3u8-parser": "^4.7.0",
-    "node-ssh": "^12.0.0",
-    "yaml": "^1.10.2"
+    "toml": "^3.0.0"
+  },
+  "devDependencies": {
+    "@sxzz/eslint-config-prettier": "^1.6.1",
+    "@sxzz/eslint-config-ts": "^1.6.2",
+    "@types/node": "*",
+    "escape-string-regexp": "^5.0.0",
+    "eslint": "^8.9.0",
+    "eslint-define-config": "^1.2.5",
+    "esno": "^0.14.1",
+    "fast-glob": "^3.2.11",
+    "formdata-node": "^4.3.2",
+    "got": "^12.0.1",
+    "prettier": "^2.5.1",
+    "tsup": "^5.11.13",
+    "typescript": "^4.5.5",
+    "vitest": "^0.4.2"
   }
 }

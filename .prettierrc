@@ -1,7 +1,5 @@
 {
-  "arrowParens": "avoid",
-  "semi": true,
-  "singleQuote": true,
-  "endOfLine": "lf",
-  "tabWidth": 2
+  "$schema": "http://json.schemastore.org/prettierrc",
+  "semi": false,
+  "singleQuote": true
 }

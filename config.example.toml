@@ -1,0 +1,20 @@
+dirs = ['/tmp/abc']
+uploader = 'foo'
+
+[storage]
+secretId = 'xxxxxxxxx'
+secretKey = 'xxxxxxxxx'
+bucket = 'xxxxxxxxx'
+region = 'ap-guangzhou'
+path = '/'              # 必须以 / 结尾 Must end with /
+
+# # ssh
+# provider = 'ssh'
+# path = '/tmp/'
+# [storage.connect]
+# host = '1.2.3.4'
+# port = 22
+# username = 'root'
+# password = 'password'
+# privateKey = '/path/id_rsa'
+# passphrase = ''

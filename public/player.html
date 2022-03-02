@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/video.js@7.8.0/dist/video-js.min.css"
+      href="https://cdn.jsdelivr.net/npm/video.js@7.17.0/dist/video-js.min.css"
     />
     <style type="text/css">
       * {
@@ -78,34 +78,34 @@
       </video>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/video.js@7.8.0/dist/video.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.25/videojs.hotkeys.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/video.js@7.17.0/dist/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-hotkeys@0.2.27/videojs.hotkeys.min.js"></script>
     <script>
-      new Vue({
+      new window.Vue({
         el: '#app',
         data() {
           return {
             params: { padding: 42 },
             source: '',
-          };
+          }
         },
 
         created() {
-          this.hookXHR();
+          this.hookXHR()
 
-          this.source = new URL(location.href).searchParams.get('source');
+          this.source = new URL(location.href).searchParams.get('source')
         },
 
         mounted() {
-          this.initVideoJs();
+          this.initVideoJs()
         },
 
         methods: {
           hookXHR() {
-            const that = this;
+            const that = this
 
-            const open = XMLHttpRequest.prototype.open;
+            const open = XMLHttpRequest.prototype.open
             XMLHttpRequest.prototype.open = function (
               method,
               url,
@@ -118,22 +118,22 @@
                 /^data:/.test(this.url) ||
                 /\.(key|m3u8)$/.test(this.url)
               ) {
-                return open.apply(this, arguments);
+                return open.apply(this, arguments)
               }
 
-              const oldReady = this.onreadystatechange;
+              const oldReady = this.onreadystatechange
               this.onreadystatechange = function () {
                 if (this.readyState == 4) {
-                  const resp = this.response;
+                  const resp = this.response
                   Object.defineProperty(this, 'response', {
                     get: () => resp.slice(that.params.padding),
-                  });
+                  })
                 }
-                return oldReady.apply(this, arguments);
-              };
+                return oldReady.apply(this, arguments)
+              }
 
-              return open.apply(this, arguments);
-            };
+              return open.apply(this, arguments)
+            }
           },
 
           initVideoJs() {
@@ -145,28 +145,28 @@
                 },
               },
               playbackRates: [0.5, 1, 1.5, 1.75, 2],
-            });
+            })
 
-            videojs.Hls.xhr.beforeRequest = options => {
-              if (options.headers) delete options.headers.Range;
-              return options;
-            };
+            videojs.Hls.xhr.beforeRequest = (options) => {
+              if (options.headers) delete options.headers.Range
+              return options
+            }
 
             player.ready(function () {
               this.hotkeys({
                 seekStep: 5,
                 volumeStep: 0.1,
                 enableModifiersForNumbers: false,
-              });
-            });
+              })
+            })
             player.on('play', () => {
               if (document.querySelector('h1'))
-                document.querySelector('h1').style.display = 'none';
-            });
-            player.play().catch(() => {});
+                document.querySelector('h1').style.display = 'none'
+            })
+            player.play().catch(() => {})
           },
         },
-      });
+      })
     </script>
   </body>
 </html>

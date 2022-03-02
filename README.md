@@ -1,4 +1,4 @@
-# Free HLS Live
+# Free HLS Live [![npm](https://img.shields.io/npm/v/free-hls-live.svg)](https://npmjs.com/package/free-hls-live)
 
 Free live streaming with Free-HLS.
 
