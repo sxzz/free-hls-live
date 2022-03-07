@@ -29,7 +29,7 @@
     "colorette": "^2.0.16",
     "commander": "^9.0.0",
     "cos-nodejs-sdk-v5": "^2.11.6",
-    "esbuild": "^0.14.23",
+    "esbuild": "^0.14.25",
     "esbuild-register": "^3.3.2",
     "m3u8-parser": "^4.7.0",
     "toml": "^3.0.0"
