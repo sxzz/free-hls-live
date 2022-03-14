@@ -29,7 +29,7 @@
     "colorette": "^2.0.16",
     "commander": "^9.0.0",
     "cos-nodejs-sdk-v5": "^2.11.6",
-    "esbuild": "^0.14.25",
+    "esbuild": "^0.14.26",
     "esbuild-register": "^3.3.2",
     "m3u8-parser": "^4.7.0",
     "toml": "^3.0.0"
@@ -39,15 +39,15 @@
     "@sxzz/eslint-config-ts": "^1.7.0",
     "@types/node": "*",
     "escape-string-regexp": "^5.0.0",
-    "eslint": "^8.10.0",
+    "eslint": "^8.11.0",
     "eslint-define-config": "^1.2.5",
     "esno": "^0.14.1",
     "fast-glob": "^3.2.11",
     "formdata-node": "^4.3.2",
     "got": "^12.0.1",
     "prettier": "^2.5.1",
-    "tsup": "^5.11.13",
+    "tsup": "^5.12.1",
     "typescript": "^4.6.2",
-    "vitest": "^0.5.9"
+    "vitest": "^0.6.1"
   }
 }
