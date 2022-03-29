@@ -6,7 +6,7 @@ import { program } from 'commander'
 import chokidar from 'chokidar'
 // @ts-expect-error
 import { Parser } from 'm3u8-parser'
-import { green, blue } from 'colorette'
+import { blue, green } from 'colorette'
 import escapeStringRegexp from 'escape-string-regexp'
 import pkg from '../package.json'
 import { getConfig } from './utils/config'
@@ -15,8 +15,8 @@ import type {
   Option,
   OptionCli,
   OptionResolved,
-  Uploader,
   StorageProvider,
+  Uploader,
 } from './types'
 
 program
