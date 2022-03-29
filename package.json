@@ -35,7 +35,7 @@
     "toml": "^3.0.0"
   },
   "devDependencies": {
-    "@sxzz/eslint-config-prettier": "^1.7.0",
+    "@sxzz/eslint-config-prettier": "^2.1.0",
     "@sxzz/eslint-config-ts": "^1.7.0",
     "@types/node": "*",
     "escape-string-regexp": "^5.0.0",
