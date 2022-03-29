@@ -18,8 +18,8 @@
   "scripts": {
     "start": "node ./bin/free-hls-live.js",
     "dev": "esno ./src/index.ts",
-    "lint": "eslint . --ext .js,.ts,.jsx,.tsx",
-    "lint:fix": "eslint . --fix --ext .js,.ts,.jsx,.tsx",
+    "lint": "eslint . --ext .js,.ts,.json,.md",
+    "lint:fix": "eslint . --fix --ext .js,.ts,.json,.md",
     "build": "tsup && esno scripts/postbuild.ts",
     "test": "vitest",
     "prepublishOnly": "pnpm run build"
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@sxzz/eslint-config-prettier": "^2.1.0",
-    "@sxzz/eslint-config-ts": "^1.7.0",
+    "@sxzz/eslint-config-ts": "^2.1.0",
     "@types/node": "*",
     "escape-string-regexp": "^5.0.0",
     "eslint": "^8.12.0",
