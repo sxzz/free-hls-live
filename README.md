@@ -56,3 +56,15 @@ Use the web player `public/player.html` to play
 ## Reference
 
 - [How to do HLS streaming in OBS (Open Broadcast Studio)](https://obsproject.com/forum/resources/how-to-do-hls-streaming-in-obs-open-broadcast-studio.945/)
+
+## Sponsors
+
+<p align="center">
+  <a href="https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg">
+    <img src='https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg'/>
+  </a>
+</p>
+
+## License
+
+[AGPL-3.0](./LICENSE) License © 2020-PRESENT [三咲智子](https://github.com/sxzz)

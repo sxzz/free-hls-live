@@ -48,11 +48,23 @@ yarn start [steaming-folder] -c <config-path> [-u uploader-name]
 
 使用网页版播放器 `public/player.html` 进行播放
 
-## Related
+## 相关链接
 
 - [sxzz/free-hls.js](https://github.com/sxzz/free-hls.js) HLS 上传工具（Node.js 版）
 - [sxyazi/free-hls](https://github.com/sxyazi/free-hls) 一个免费的 HLS 解决方案
 
-## Reference
+## 参考链接
 
 - [How to do HLS streaming in OBS (Open Broadcast Studio)](https://obsproject.com/forum/resources/how-to-do-hls-streaming-in-obs-open-broadcast-studio.945/)
+
+## 赞助者
+
+<p align="center">
+  <a href="https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg">
+    <img src='https://cdn.jsdelivr.net/gh/sxzz/sponsors/sponsors.svg'/>
+  </a>
+</p>
+
+## 许可证
+
+[AGPL-3.0](./LICENSE) License © 2020-PRESENT [三咲智子](https://github.com/sxzz)
